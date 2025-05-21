@@ -6,7 +6,7 @@ const Button = ({
   className = '',
   ...props
 }) => {
-  const baseClasses = 'font-medium rounded-md transition duration-300 inline-flex items-center justify-center';
+  const baseClasses = 'font-medium rounded-md transition duration-300 ease-in-out inline-flex items-center justify-center transform hover:scale-105';
   const variants = {
     primary: 'bg-purple-700 hover:bg-purple-800 text-white',
     secondary: 'bg-amber-500 hover:bg-amber-600 text-white',

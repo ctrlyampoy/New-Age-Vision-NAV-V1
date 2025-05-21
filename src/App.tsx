@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DashboardLayout from './components/Layout/DashboardLayout';
 import Home from './pages/Home';
@@ -10,8 +10,29 @@ import TalentAcquisition from './pages/TalentAcquisition';
 import TechnologyLabs from './pages/TechnologyLabs';
 import Mentorship from './pages/Mentorship';
 import Merchandise from './pages/Merchandise';
+import ScrollToTopButton from './components/UI/ScrollToTopButton';
 export function App() {
-  return <BrowserRouter>
+ useEffect(() => {
+ const observer = new IntersectionObserver(
+ (entries) => {
+ entries.forEach((entry) => {
+ if (entry.isIntersecting) {
+ entry.target.classList.add('fade-in-on-scroll');
+ observer.unobserve(entry.target); // Unobserve once animated
+ }
+ });
+ },
+ { threshold: 0.1 } // Adjust the threshold as needed
+ );
+ const elements = document.querySelectorAll('.animate-on-scroll');
+ elements.forEach((el) => observer.observe(el));
+ return () => {
+ observer.disconnect(); // Clean up the observer on unmount
+ };
+ }, []);
+ return <BrowserRouter>
+
+      <ScrollToTopButton />
       <DashboardLayout>
         <Routes>
           <Route path="/" element={<Home />} />
