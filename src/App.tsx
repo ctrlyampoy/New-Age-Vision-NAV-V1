@@ -1,32 +1,29 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Layout/Navbar';
-import Footer from './components/Layout/Footer';
-import HomePage from './pages/Home';
-import ServicesPage from './pages/Services';
-import ContactPage from './pages/Contact';
-import AboutPage from './pages/About';
-import TestimonialsPage from './pages/Testimonials';
-import PortfolioPage from './pages/Portfolio';
-import BlogPage from './pages/Blog';
-import ChatWidget from './components/UI/ChatWidget';
+import DashboardLayout from './components/Layout/DashboardLayout';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import MusicProduction from './pages/MusicProduction';
+import FilmProduction from './pages/FilmProduction';
+import ArtistManagement from './pages/ArtistManagement';
+import TalentAcquisition from './pages/TalentAcquisition';
+import TechnologyLabs from './pages/TechnologyLabs';
+import Mentorship from './pages/Mentorship';
+import Merchandise from './pages/Merchandise';
 export function App() {
   return <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-50">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-          </Routes>
-        </main>
-        <Footer />
-        <ChatWidget />
-      </div>
+      <DashboardLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/music-production" element={<MusicProduction />} />
+          <Route path="/film-production" element={<FilmProduction />} />
+          <Route path="/artist-management" element={<ArtistManagement />} />
+          <Route path="/talent-acquisition" element={<TalentAcquisition />} />
+          <Route path="/technology" element={<TechnologyLabs />} />
+          <Route path="/mentorship" element={<Mentorship />} />
+          <Route path="/merchandise" element={<Merchandise />} />
+        </Routes>
+      </DashboardLayout>
     </BrowserRouter>;
 }
